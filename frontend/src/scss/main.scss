@@ -1,0 +1,76 @@
+@import "../../node_modules/bootstrap/scss/_functions";
+@import "../../node_modules/bootstrap/scss/_variables";
+@import "../../node_modules/bootstrap/scss/_maps";
+@import "../../node_modules/bootstrap/scss/_utilities";
+
+// Define custom width utilities
+$utilities: (
+  "width": (
+    property: width,
+    class: w,
+    values: (
+      10: 10%,
+      15: 15%,
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+);
+
+$utilities: (
+  "height": (
+    property: height,
+    class: h,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      80: 80%,
+      85: 85%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Scrollbar
+.scrollbar {
+  overflow-y: hidden;
+}
+
+.scrollbar:hover {
+  overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $secondary-bg-subtle;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $gray-500;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $gray-600;
+}
+
+// Message container
+.messages-container {
+  background-image: url("../assets/img/chat-background.jpg");
+  background-size: cover;
+}
+
