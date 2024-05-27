@@ -13,12 +13,20 @@ app.use(
   cors({
     origin: "http://localhost:3001", // Allow your React app origin
     methods: ["GET", "POST"],
+  }),
+  cors({
+    origin: "http://localhost:8080", // Allow your React app origin
+    methods: ["GET", "POST"],
   })
 );
 
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3001",
+    methods: ["GET", "POST"],
+  },
+  cors: {
+    origin: "http://localhost:8080",
     methods: ["GET", "POST"],
   },
 });

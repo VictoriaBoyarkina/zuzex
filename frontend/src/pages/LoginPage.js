@@ -31,10 +31,11 @@ const LoginPage = () => {
   }, []);
 
   const handleClick = async () => {
+    setLoading(true);
     try {
       const userName = await getUserName();
       const avatar = await getAvatar(userName);
-      setLoading(false);
+
       const user = {
         userName,
         avatar,

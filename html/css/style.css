@@ -1,4 +1,5 @@
 :root {
+  --user-message-bg: #D3F7E6;
   --bs-tertiary-bg-rgb: #f8f9fa;
   --bs-border-color: #dee2e6;
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -24,7 +25,7 @@
 
 html {
   color: var(--bs-dark-rgb);
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Reddit Sans", sans-serif;
   box-sizing: border-box;
 }
@@ -55,6 +56,12 @@ h4,
 h5,
 h6 {
   margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  color: transparent;
   padding: 0;
 }
 
@@ -197,7 +204,6 @@ h6 {
 }
 
 .chat__users-list {
-  overflow-y: hidden;
   padding-left: 1rem;
   padding-right: 1rem;
   height: 100%;
@@ -349,7 +355,7 @@ input[type="text"]:focus {
 }
 
 .login__card-icon {
-  max-width: 16rem;
+  max-width: 25%;
   align-self: center;
 }
 
@@ -373,4 +379,92 @@ input[type="text"]:focus {
 
 .login__btn {
   align-self: center;
+}
+
+/* Scroll */
+.scrollbar {
+  overflow-y: hidden;
+}
+
+.scrollbar:hover {
+  overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(224, 226, 226);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(164, 164, 164);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(120, 120, 120);
+}
+
+/* Image preview */
+.preview-outer {
+  padding-bottom: 1.5rem;
+  margin-left: 3.3rem;
+}
+
+.preview-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.preview-close {
+  width: 20px;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.preview-image {
+  border-radius: 0.5rem;
+  max-height: 100px;
+  max-width: 200px;
+}
+
+/* Message styles */
+.message-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.message-user-icon {
+  max-width: 30px;
+  margin-right: 1.5rem;
+  align-self: flex-end;
+}
+
+.message-text-container {
+  overflow-wrap: break-word;
+  background-color: var(--bs-btn-bg);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.8rem;
+  display: table;
+  font-size: 0.6rem;
+}
+
+.message-background {
+  background-color: var(--user-message-bg);
+}
+
+.message-user-name {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: green;
 }
