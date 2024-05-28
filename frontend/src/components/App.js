@@ -5,7 +5,6 @@ import store from "../store/index.js";
 import { Provider } from "react-redux";
 import LayoutSelector from "./LayoutSelector.js";
 import { BrowserRouter } from "react-router-dom";
-import { useEffect } from "react";
 
 function App() {
   return (

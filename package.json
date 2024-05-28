@@ -10,5 +10,6 @@
   },
   "devDependencies": {
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "build": "npm run build --prefix frontend"
 }

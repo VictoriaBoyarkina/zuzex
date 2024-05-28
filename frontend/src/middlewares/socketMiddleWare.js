@@ -4,7 +4,7 @@ const createMySocketMiddleware = (url) => {
   return (storeAPI) => {
     let socket = io(url);
 
-    socket.on("all users", (users) => {
+    socket.on("update users", (users) => {
       storeAPI.dispatch({
         type: "SOCKET_ALL_USERS",
         payload: users,
@@ -25,27 +25,19 @@ const createMySocketMiddleware = (url) => {
       });
     });
 
-    socket.on("new user", (user) => {
-      storeAPI.dispatch({
-        type: "SOCKET_NEW_USER",
-        payload: user,
-      });
-    });
-
     return (next) => (action) => {
       switch (action.type) {
         case "SEND_WEBSOCKET_MESSAGE":
           socket.emit("chat message", action.payload);
           break;
         case "SEND_WEBSOCKET_USER":
-          socket.emit("new user", action.payload);
-          break;
-        case "GET_WEBSOCKET_USERS":
-          socket.emit("get users");
+          socket.emit("user joined", action.payload);
           break;
         case "GET_WEBSOCKET_MESSAGES":
           socket.emit("get messages");
           break;
+        case "LOGOUT":
+          socket.emit("log out");
         default:
           return next(action);
       }

@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -5,7 +6,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const cors = require("cors");
 
-const users = [];
+let users = {};
 const messages = [];
 
 // Enable CORS
@@ -13,20 +14,12 @@ app.use(
   cors({
     origin: "http://localhost:3001", // Allow your React app origin
     methods: ["GET", "POST"],
-  }),
-  cors({
-    origin: "http://localhost:8080", // Allow your React app origin
-    methods: ["GET", "POST"],
   })
 );
 
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3001",
-    methods: ["GET", "POST"],
-  },
-  cors: {
-    origin: "http://localhost:8080",
     methods: ["GET", "POST"],
   },
 });
@@ -38,6 +31,13 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log('A user connected:', socket.id);
 
+  // Notify about new user
+  socket.on("user joined", (user) => {
+    console.log(user);
+    users[socket.id] = user;
+    io.emit('update users', Object.values(users));
+  });
+
   // Broadcast the message to all clients
   socket.on("chat message", (msg) => {
     console.log('chat message');
@@ -45,28 +45,22 @@ io.on("connection", (socket) => {
     io.emit("chat message", msg);
   });
 
-  // Notify about new user
-  socket.on("new user", (user) => {
-    console.log('New user event received:', user);
-    users.push(user);
-    console.log('User added to array:', user);
-    console.log('Current users:', users);
-    io.emit("new user", user);
-  });
-
   // Imitate get request of messages
   socket.on("get messages", () => {
-    console.log('Messages requested');
     io.emit("all messages", messages);
   });
 
-  // Imitate get request of users
-  socket.on("get users", () => {
-    io.emit("all users", users);
+  // Delete user if disconnected
+  socket.on('log out', () => {
+    console.log('A user disconnected:', socket.id);
+    delete users[socket.id];
+    io.emit('update users', Object.values(users));
   });
 
-  socket.on("disconnect", () => {
+  socket.on('disconnect', () => {
     console.log('A user disconnected:', socket.id);
+    delete users[socket.id];
+    io.emit('update users', Object.values(users));
   });
 });
 

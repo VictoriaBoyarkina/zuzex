@@ -16,9 +16,6 @@ const usersSlice = createSlice({
     .addCase('SOCKET_ALL_USERS', (state, action) => {
       usersAdapter.setAll(state, action.payload);
     })
-    .addCase('SOCKET_NEW_USER', (state, action) => {
-      usersAdapter.addOne(state, action.payload);
-    })
   },
 });
 

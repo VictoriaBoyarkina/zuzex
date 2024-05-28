@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { addNewUser } from "../actions/socketActions.js";
 import { useToast } from "../hooks/index.js";
 import koalaIcon from "../assets/img/koala-icon.svg";
+import { disconnect } from "../actions/socketActions.js";
 
 const LoginPage = () => {
   // localStorage.clear();
@@ -27,7 +28,7 @@ const LoginPage = () => {
       navigate(routes.chatPage());
       setLoading(false);
     }
-    document.title = 'Логин';
+    document.title = "Логин";
   }, []);
 
   const handleClick = async () => {
@@ -41,7 +42,6 @@ const LoginPage = () => {
         avatar,
         id: uniqid(),
       };
-      dispatch(addNewUser(user));
       auth.saveUser(JSON.stringify(user));
       auth.logIn();
       navigate(routes.chatPage());
@@ -57,7 +57,7 @@ const LoginPage = () => {
   };
 
   return loading ? (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex h-100 justify-content-center align-items-center">
       <div className="spinner-border text-primary" role="status">
         <span className="sr-only" />
       </div>
@@ -66,7 +66,12 @@ const LoginPage = () => {
     <div className="row justify-content-center align-content-center h-100">
       <div className="col-8 col-sm-10 col-md-8 col-xxl-6">
         <div className="card shadow-sm pt-3">
-        <img src={koalaIcon} class="card-img-top align-self-center" alt="icon" style={{maxWidth: "16rem"}}/>
+          <img
+            src={koalaIcon}
+            className="card-img-top align-self-center"
+            alt="icon"
+            style={{ maxWidth: "16rem" }}
+          />
           <div className="cardbody p-3 d-flex justify-content-center flex-column">
             <p className="text-center">
               Добро пожаловать в самый крутой чатик!

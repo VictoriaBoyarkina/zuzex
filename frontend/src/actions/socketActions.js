@@ -13,14 +13,14 @@ export const addNewUser = (user) => {
   }
 }
 
-export const getUsers = () => {
-  return {
-      type: "GET_WEBSOCKET_USERS",
-  }
-}
-
 export const getMessages = () => {
   return {
       type: "GET_WEBSOCKET_MESSAGES",
+  }
+}
+
+export const logOut = () => {
+  return {
+      type: "LOGOUT",
   }
 }

@@ -1,20 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUsers } from "../actions/socketActions.js";
+import { addNewUser } from "../actions/socketActions.js";
 import { useUsers } from "../hooks/index.js";
 import User from "./ChatUser.js";
+import { useAuth } from "../hooks/index.js";
 
 const Users = () => {
   const dispatch = useDispatch();
 
+  // Get current user
+  const auth = useAuth();
+  const user = auth.getUser();
+
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(addNewUser(user));
   }, []);
 
   const users = useUsers();
 
   return (
-    <div className="col-4 col-md-3 border-end px-0 bg-light flex-column h-100 d-none d-md-flex d-lg-flex">
+    <div className="col-4 col-md-3 border-end px-0 bg-light flex-column h-100 d-none d-md-flex d-lg-flex ps-3">
       <div className="d-flex mt-1 justify-content-between mb-2 px-3 py-4 ">
         {
           users.length === 0 ? <span className="text-wrap text-truncate">Тут только вы</span> : <span className="text-wrap text-truncate">Пользователи в сети:</span>
