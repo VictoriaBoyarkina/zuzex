@@ -1,0 +1,40 @@
+@import "../../node_modules/bootstrap/scss/_functions";
+@import "../../node_modules/bootstrap/scss/_variables";
+@import "../../node_modules/bootstrap/scss/_maps";
+@import "../../node_modules/bootstrap/scss/_utilities";
+
+// Define custom width utilities
+$utilities: (
+  "width": (
+    property: width,
+    class: w,
+    values: (
+      10: 10%,
+      15: 15%,
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      80: 85%,
+      auto: auto,
+    ),
+  ),
+);
+
+$utilities: (
+  "height": (
+    property: height,
+    class: h,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      80: 80%,
+      85: 85%,
+      90: 90%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
