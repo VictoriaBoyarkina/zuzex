@@ -19,9 +19,9 @@ const ImageUpload = (props) => {
   const compressAndConvertToBase64 = (file) => {
     props.onLoading(true);
     new Compressor(file, {
-      quality: 0.6,
-      maxWidth: 800,
-      maxHeight: 800,
+      quality: 1,
+      maxWidth: 600,
+      maxHeight: 600,
       success(result) {
         const reader = new FileReader();
         reader.readAsDataURL(result);

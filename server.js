@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://fluffy-hotteok-9d2456.netlify.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -25,7 +25,7 @@ const messages = [];
 // Enable CORS
 app.use(
   cors({
-    origin: "https://fluffy-hotteok-9d2456.netlify.app", // Allow your React app origin
+    origin: "http://localhost:3000", // Allow your React app origin
     methods: ["GET", "POST"],
   })
 );
