@@ -3,7 +3,6 @@ import getAvatar from "../functions/getAvatar.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/index.js";
-import { useDispatch } from "react-redux";
 import routes from "../routes.js";
 import uniqid from "uniqid";
 import { connect } from "react-redux";
@@ -18,7 +17,6 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   const auth = useAuth();
-  const dispatch = useDispatch();
   const { addToast } = useToast();
 
   useEffect(() => {

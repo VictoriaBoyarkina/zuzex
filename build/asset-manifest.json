@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0a6bd8e5.css",
-    "main.js": "/static/js/main.d5f5c47d.js",
+    "main.js": "/static/js/main.2e6a7122.js",
     "static/media/chat-background.jpg": "/static/media/chat-background.766925587983047d0a46.jpg",
     "static/media/koala-icon.svg": "/static/media/koala-icon.17874fac51f9f8c409dee98f3ddcbdda.svg",
     "static/media/paperclip-icon.svg": "/static/media/paperclip-icon.9c63290cc4150b9b38b083687f5bd9c6.svg",
@@ -11,6 +11,6 @@
   },
   "entrypoints": [
     "static/css/main.0a6bd8e5.css",
-    "static/js/main.d5f5c47d.js"
+    "static/js/main.2e6a7122.js"
   ]
 }
