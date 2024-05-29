@@ -7,7 +7,7 @@ import ImagePreview from "./ChatImagePreview.js";
 import ImageUpload from "./ChatImageUpload.js";
 import { useAuth } from "../hooks/index.js";
 import { useDispatch } from "react-redux";
-import { useMessages } from "../hooks/index.js";
+import { useMessages, useToast } from "../hooks/index.js";
 import uniqid from "uniqid";
 import { sendSocketMessage, getMessages } from "../actions/socketActions.js";
 
@@ -18,6 +18,7 @@ const Messages = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const dispatch = useDispatch();
+  const { addToast } = useToast();
 
   // Add focus to input
   const inputEl = useRef();
@@ -59,11 +60,15 @@ const Messages = () => {
     };
     e.preventDefault();
     console.log(message);
-    dispatch(sendSocketMessage(message));
-    setSubmitting(false);
-    setMessageValue("");
-    setImagePreview("");
-    setBase64String("");
+    try {
+      dispatch(sendSocketMessage(message));
+      setSubmitting(false);
+      setMessageValue("");
+      setImagePreview("");
+      setBase64String("");
+    } catch (e) {
+      addToast("Ошибка при отправке сообщения", "bg-danger text-white");
+    }
   };
 
   return (

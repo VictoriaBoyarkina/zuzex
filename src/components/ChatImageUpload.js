@@ -19,9 +19,9 @@ const ImageUpload = (props) => {
   const compressAndConvertToBase64 = (file) => {
     props.onLoading(true);
     new Compressor(file, {
-      quality: 1,
-      maxWidth: 600,
-      maxHeight: 600,
+      quality: 0.8,
+      maxWidth: 800,
+      maxHeight: 800,
       success(result) {
         const reader = new FileReader();
         reader.readAsDataURL(result);
@@ -32,13 +32,13 @@ const ImageUpload = (props) => {
         };
         reader.onerror = (error) => {
           props.onLoading(false);
-          addToast('Не удалось загрузить фотографию', 'bg-danger text-white');
+          addToast("Не удалось загрузить фотографию", "bg-danger text-white");
           console.error("Error converting file to base64:", error);
         };
       },
       error(err) {
         props.onLoading(false);
-        addToast('Не удалось загрузить фотографию', 'bg-danger text-white');
+        addToast("Не удалось загрузить фотографию", "bg-danger text-white");
         console.error("Error compressing the image:", err);
       },
     });

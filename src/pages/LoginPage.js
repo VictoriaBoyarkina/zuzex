@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { addNewUser } from "../actions/socketActions.js";
 import { useToast } from "../hooks/index.js";
 import koalaIcon from "../assets/img/koala-icon.svg";
-import { disconnect } from "../actions/socketActions.js";
+import Loader from "../components/AppLoader.js";
 
 const LoginPage = () => {
   // localStorage.clear();
@@ -57,11 +57,7 @@ const LoginPage = () => {
   };
 
   return loading ? (
-    <div className="d-flex h-100 justify-content-center align-items-center">
-      <div className="spinner-border text-primary" role="status">
-        <span className="sr-only" />
-      </div>
-    </div>
+    <Loader />
   ) : (
     <div className="row justify-content-center align-content-center h-100">
       <div className="col-8 col-sm-10 col-md-8 col-xxl-6">

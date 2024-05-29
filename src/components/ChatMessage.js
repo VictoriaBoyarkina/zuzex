@@ -51,15 +51,11 @@ const Message = (props) => {
 
   return (
     <>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        animation={false}
-        closeButton
-        size="lg"
-      >
-        <Modal.Header style={{position: "absolute", right: 0, border: "none"}} closeButton>
-        </Modal.Header>
+      <Modal show={show} onHide={handleClose} animation={false} centered="true">
+        <Modal.Header
+          style={{ position: "absolute", right: 0, border: "none" }}
+          closeButton
+        ></Modal.Header>
         {image && <img src={image.src} className="card-img-top rounded-0" />}
       </Modal>
       <div className="d-flex align-items-center mb-2" key={message.id}>
@@ -73,7 +69,7 @@ const Message = (props) => {
                 ? "card bg-success-subtle border-0 rounded-4"
                 : "card border-0 rounded-4"
             }
-            style={{ maxWidth: 22 + "rem" }}
+            style={{ maxWidth: 22 + "rem"}}
           >
             {message.userId !== user.id ? (
               <p

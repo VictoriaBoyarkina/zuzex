@@ -48,7 +48,8 @@
     "svg-inline-react": "^3.2.1",
     "uniqid": "^5.4.0",
     "url": "^0.11.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zlib": "^1.0.5"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"node server.js\"",
